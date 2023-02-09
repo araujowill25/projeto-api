@@ -69,5 +69,6 @@ class ProdutoController extends Controller
     {
         $produto->delete();
         return ['o Item foi removido com sucesso'];
+        
     }
 }
