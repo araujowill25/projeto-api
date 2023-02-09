@@ -37,6 +37,7 @@ class ProdutoController extends Controller
         ]);
         $produto = Produto::create($request->all());
         return $produto;
+        /* teste de git*/
         
     }
 
