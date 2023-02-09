@@ -27,7 +27,14 @@ class ProdutoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        $this->validate($request,[
+            "data_de_criacao"=>"required|date_format:Y-m-d",
+            "data_de_atualizacao"=>"required|date_format:Y-m-d",
+            "nome"=>"required|max:50",
+            "tipo"=>"required|max:50",
+            "comentario"=>"required|max:50"
+        ]);
         $produto = Produto::create($request->all());
         return $produto;
         
@@ -69,6 +76,6 @@ class ProdutoController extends Controller
     {
         $produto->delete();
         return ['o Item foi removido com sucesso'];
-        
+
     }
 }
