@@ -36,8 +36,9 @@ class ProdutoController extends Controller
             "comentario"=>"required|max:50"
         ]);
         $produto = Produto::create($request->all());
+       
         return $produto;
-        /* teste de git*/
+       
         
     }
 
@@ -47,12 +48,13 @@ class ProdutoController extends Controller
      * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
+
     public function show(Produto $produto)
+
     {
+        
         return $produto;
     }
-
-   
 
     /**
      * Update the specified resource in storage.
@@ -61,8 +63,20 @@ class ProdutoController extends Controller
      * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, Produto $produto)
     {
+     
+
+        $this->validate($request,[
+            "data_de_criacao"=>"sometimes|required|date_format:Y-m-d",
+            "data_de_atualizacao"=>"sometimes|required|date_format:Y-m-d",
+            "nome"=>"sometimes|required|max:50",
+            "tipo"=>"sometimes|required|max:50",
+            "comentario"=>"sometimes|required|max:50"
+        ]);
+
+
         $produto->update($request->all());
         return $produto;
     }
